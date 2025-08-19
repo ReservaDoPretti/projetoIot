@@ -3,12 +3,8 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center text-white">
-            <h2 class="text-dark d-flex flex-row justify-content-start mb-2" > Ambientes</h2>
-                    <div class="d-flex flex-row justify-content-end mb-2">
-                        <a href="{{ route('ambiente.create') }}" class="btn btn-primary">
-                            <i class="bi bi-plus-circle"></i> Criar Ambiente
-                        </a>
-                    </div>
+            <h2 class="text-dark d-flex flex-row justify-content-start mb-2" > Ambientes <i
+                    class="bi bi-person-fill"></i></h2>
 
           
         </div>
