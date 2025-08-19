@@ -38,6 +38,8 @@
                         wire:confirm = "Tem certeza que deseja cadastrar?">
                         <i class="bi bi-check-circle"></i> Cadastrar
                     </button>
+                    <a href="{{ route('ambiente.list') }}" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left-circle"></i> Voltar
                     </a>
                 </div>
             </form>
