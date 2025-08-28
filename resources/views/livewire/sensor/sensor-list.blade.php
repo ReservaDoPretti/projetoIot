@@ -3,11 +3,15 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center text-white">
-            <h2 class="text-dark d-flex flex-row justify-content-start mb-2" > Sensores <i
-                    class="bi bi-person-fill"></i></h2>
+                <h2 class="text-dark d-flex flex-row justify-content-start mb-2"> Sensores <i class="bi bi-diagram-3-fill"></i></h2>
 
-          
-        </div>
+                <div class="d-flex flex-row justify-content-end mb-2">
+                   <a href="{{ route('sensor.create') }}" class="btn btn-primary">
+                        <i class="bi bi-diagram-3"></i> Novo Sensor
+                    </a>
+                </div>
+            </div>
+
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-md-6">
@@ -23,7 +27,7 @@
                         <option value="100">100 por página</option>
                     </select>
                 </div>
-            </div>
+            </div> 
 
             @if (session()->has('message'))
                 <div class="alert alert-success">
@@ -60,22 +64,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($sensores as $sensors)
+                        @forelse($sensores as $sensor)
                             <tr>
-                                <td>{{ $sensor->ambienteID }}</td>
+                                <td>{{ $sensor->ambiente_id }}</td>
                                 <td>{{ $sensor->codigo }}</td>
                                 <td>{{ $sensor->tipo }}</td>
                                 <td>{{ $sensor->descricao }}</td>
                                 <td>{{ $sensor->status }}</td>
-                                <td>
-                                    <a href="{{ route('sensor.create', $ambiente->id) }}" class="btn btn-sm btn-warning">
+                               <td>
+                                    <a href="{{ route('sensor.edit', $sensor->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
                                     </a>
+                                    <button wire:click="delete({{ $sensor->id }})"
+                                            class="btn btn-sm btn-danger"wire:confirm="Tem certeza que deseja excluir">
+                                            <i class="bi bi-trash"></i>
+                                     </button>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">Nenhum ambiente encontrado.</td>
+                                <td colspan="5" class="text-center">Nenhum sensor encontrado.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -83,7 +91,7 @@
             </div>
 
             <div class="mt-3">
-                {{ $ambientes->links() }}
+                {{ $sensores->links() }}
             </div>
         </div>
     </div>
