@@ -13,11 +13,11 @@ class AmbienteList extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $search = '';
-    public $perPage = 10;
+    public $perPage = 15;
 
     protected $queryString = [
         'search' => ['except' => ''],
-        'perPage' => ['except' => 10],
+        'perPage' => ['except' => 15],
     ];
 
 
@@ -29,5 +29,12 @@ class AmbienteList extends Component
 
         return view('livewire.ambiente.ambiente-list', compact('ambientes'));
     }
-    
+
+    public function delete($id)
+    {
+       
+            $ambiente = Ambiente::findOrFail($id);
+            Ambiente::findOrfail($ambiente->id)->delete();
+            session()->flash('message', 'Ambiente deletado com sucesso!');
+    }
 }
