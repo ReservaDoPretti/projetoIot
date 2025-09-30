@@ -15,4 +15,3 @@ Route::get('/registro', RegistroList::class)->name('registro.list');
 Route::get('/sensor/create', SensorCreate::class)->name('sensor.create');
 Route::get('/sensor/list', SensorList::class)->name('sensor.list');
 Route::get('/sensor/{id}/edit', SensorEdit::class)->name('sensor.edit');
-
