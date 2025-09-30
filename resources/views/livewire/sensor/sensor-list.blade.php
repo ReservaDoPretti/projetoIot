@@ -8,6 +8,7 @@
                 <div class="d-flex flex-row justify-content-end mb-2">
                    <a href="{{ route('sensor.create') }}" class="btn btn-primary">
                         <i class="bi bi-diagram-3"></i> Novo Sensor
+
                     </a>
                 </div>
             </div>
@@ -56,9 +57,8 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Ambiente_ID</th>
-                            <th>Código</th>
-                            <th>Tipo</th>
+                            <th>Id</th>
+                            <th>Nome</th>
                             <th>Descrição</th>
                             <th>Status</th>
                         </tr>
