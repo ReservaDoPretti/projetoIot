@@ -3,11 +3,12 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center text-white">
-                <h2 class="text-dark d-flex flex-row justify-content-start mb-2"> Ambientes <i class="bi bi-tree-fill text-success"></i></h2>
+                <h2 class="text-dark d-flex flex-row justify-content-start mb-2"> Sensores <i class="bi bi-diagram-3-fill"></i></h2>
 
                 <div class="d-flex flex-row justify-content-end mb-2">
-                   <a href="{{ route('ambiente.create') }}" class="btn btn-primary">
-                        <i class="bi bi-tree"></i> Novo Ambiente
+                   <a href="{{ route('sensor.create') }}" class="btn btn-primary">
+                        <i class="bi bi-diagram-3"></i> Novo Sensor
+
                     </a>
                 </div>
             </div>
@@ -16,7 +17,7 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <input type="text" wire:model.live="search" class="form-control" wire:model.live="search"
-                        placeholder="Buscar Ambientes..." class="btn btn-primary">
+                        placeholder="Buscar Sensores..." class="btn btn-primary">
                 </div>
 
                 <div class="col-md-3">
@@ -63,18 +64,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($ambientes as $ambiente)
+                        @forelse($sensores as $sensor)
                             <tr>
-                                <td>{{ $ambiente->id }}</td>
-                                <td>{{ $ambiente->nome }}</td>
-                                <td>{{ $ambiente->descricao }}</td>
-                                <td>{{ $ambiente->status }}</td>
-                            
+                                <td>{{ $sensor->ambiente_id }}</td>
+                                <td>{{ $sensor->codigo }}</td>
+                                <td>{{ $sensor->tipo }}</td>
+                                <td>{{ $sensor->descricao }}</td>
+                                <td>{{ $sensor->status }}</td>
                                <td>
-                                    <a href="{{ route('ambiente.edit', $ambiente->id) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('sensor.edit', $sensor->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <button wire:click="delete({{ $ambiente->id }})"
+                                    <button wire:click="delete({{ $sensor->id }})"
                                             class="btn btn-sm btn-danger"wire:confirm="Tem certeza que deseja excluir">
                                             <i class="bi bi-trash"></i>
                                      </button>
@@ -90,7 +91,7 @@
             </div>
 
             <div class="mt-3">
-                {{ $ambientes->links() }}
+                {{ $sensores->links() }}
             </div>
         </div>
     </div>
