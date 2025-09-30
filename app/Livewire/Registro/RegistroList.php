@@ -23,7 +23,7 @@ class RegistroList extends Component
 
     public function render()
     {
-        $registros = Registro::where('sensor_id', 'like', "($this->search)%")
+        $registros = Registro::where('sensor_id', 'like', "{$this->search}%")
         ->orWhere('unidade', 'like', "($this->search)%")
         ->orderByDesc('id', 'sensor_id', 'unidade', 'valor', 'data_hora')
         ->paginate($this->perPage);
