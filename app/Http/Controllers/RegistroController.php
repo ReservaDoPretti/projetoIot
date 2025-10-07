@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegistroRequest;
 use App\Models\Registro;
 use App\Models\Sensor;
 use Illuminate\Http\Request;
 
 class RegistroController extends Controller
 {
-    public function store (Request $request){
+    public function store (RegistroRequest $request){
 
         $sensor = Sensor::where('codigo', '=' , $request->codigo)->first();
         if($sensor == null){
