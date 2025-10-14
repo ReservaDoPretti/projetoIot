@@ -1,17 +1,18 @@
 <div class="container mt-4">
-        
+
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center text-white">
-                <h2 class="text-dark d-flex flex-row justify-content-start mb-2"> Sensores <i class="bi bi-diagram-3-fill"></i></h2>
+            <h2 class="text-dark d-flex flex-row justify-content-start mb-2"> Sensores <i
+                    class="bi bi-diagram-3-fill"></i></h2>
 
-                <div class="d-flex flex-row justify-content-end mb-2">
-                   <a href="{{ route('sensor.create') }}" class="btn btn-primary">
-                        <i class="bi bi-diagram-3"></i> Novo Sensor
+            <div class="d-flex flex-row justify-content-end mb-2">
+                <a href="{{ route('sensor.create') }}" class="btn btn-primary">
+                    <i class="bi bi-diagram-3"></i> Novo Sensor
 
-                    </a>
-                </div>
+                </a>
             </div>
+        </div>
 
         <div class="card-body">
             <div class="row mb-3">
@@ -28,7 +29,7 @@
                         <option value="100">100 por página</option>
                     </select>
                 </div>
-            </div> 
+            </div>
 
             @if (session()->has('message'))
                 <div class="alert alert-success">
@@ -58,7 +59,8 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nome</th>
+                            <th>Codigo</th>
+                            <th>Tipo</th>
                             <th>Descrição</th>
                             <th>Status</th>
                         </tr>
@@ -71,14 +73,21 @@
                                 <td>{{ $sensor->tipo }}</td>
                                 <td>{{ $sensor->descricao }}</td>
                                 <td>{{ $sensor->status }}</td>
-                               <td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                                    </div>
+                                </td>
+                                <td>
                                     <a href="{{ route('sensor.edit', $sensor->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                     <button wire:click="delete({{ $sensor->id }})"
-                                            class="btn btn-sm btn-danger"wire:confirm="Tem certeza que deseja excluir">
-                                            <i class="bi bi-trash"></i>
-                                     </button>
+                                        class="btn btn-sm btn-danger"wire:confirm="Tem certeza que deseja excluir">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
                                 </td>
                             </tr>
                         @empty

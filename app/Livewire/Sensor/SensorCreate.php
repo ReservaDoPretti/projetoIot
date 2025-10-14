@@ -15,12 +15,12 @@ class SensorCreate extends Component
     public $descricao;
     public $status;
 
-protected $rules = [
-        'ambiente' => 'requireds',
+    protected $rules = [
+        'ambiente' => 'required',
         'codigo' => 'unique:sensors,codigo',
         'tipo' => 'required:sensors,tipo',
         'descricao' => 'required|max:255',
-        'status'=> 'required',
+        'status' => 'required',
     ];
 
     protected $messages = [
@@ -28,41 +28,42 @@ protected $rules = [
 
         'tipo.required' => 'O campo é obrigatório.',
         'tipo.max' => 'Limite de caracteres excedido.',
-      
+
 
         'descricao.required' => 'O campo é obrigatório.',
         'descricao.max' => 'Limite de caracteres foi excedido.',
-     
+
         'ambiente.required' => 'O campo é obrigatório.',
 
         'status.required' => 'O campo é obrigatório',
     ];
 
-    public function store(){
+    public function store()
+    {
 
 
-        if($this->ambiente == null){
+        if ($this->ambiente == null) {
             session()->flash('error', 'Não foi possivel encontrar o ambiente');
         }
 
-                $this->validate();
+        $this->validate();
 
-            Sensor::create([
+        Sensor::create([
             'ambiente_id' => $this->ambiente,
-            'codigo' => $this->codigo,  
+            'codigo' => $this->codigo,
             'tipo' => $this->tipo,
             'descricao' => $this->descricao,
             'status' => $this->status
         ]);
-        
+
         session()->flash('message', 'Sensor criado com sucesso.');
-        return redirect()->route('sensor.list ');
+        return redirect()->route('sensor.list');
     }
 
 
-      public function render()
+    public function render()
     {
-        $ambientes= Ambiente::all();
+        $ambientes = Ambiente::all();
         return view('livewire.sensor.sensor-create', compact('ambientes'));
     }
 }
