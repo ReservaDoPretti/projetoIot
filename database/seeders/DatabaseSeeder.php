@@ -7,20 +7,29 @@ use App\Models\Sensor;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
-    {
-        // User::factory(10)->create();
+  /**
+   * Seed the application's database.
+   */
+  public function run(): void
+  {
+    // User::factory(10)->create();
 
-      $this->call([
-        AmbienteSeeder::class,
-        SensorSeeder::class,
-        RegistroSeeder::class
-      ]);
-    }
+    User::factory()->create([
+      'name' => 'User',
+      'email' => 'user@gmail.com',
+      'password' => '123456',
+      'user_type' => 'user'
+
+    ]);
+
+    $this->call([
+      AmbienteSeeder::class,
+      SensorSeeder::class,
+      RegistroSeeder::class
+    ]);
+  }
 }
